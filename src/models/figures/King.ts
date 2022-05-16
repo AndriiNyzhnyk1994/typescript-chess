@@ -12,4 +12,18 @@ export class King extends Figure {
         this.logo = color === Colors.BLACK ? blackLogo : whiteLogo;
         this.name = FigureNames.KING
     }
+    canMove(target: Cell): boolean {
+        if(!super.canMove(target) )
+            return false
+        if(this.cell.isEmptyVertical(target) 
+        && (target.y === this.cell.y + 1 || target.y === this.cell.y - 1))
+            return true;
+        if(this.cell.isEmptyHorizontal(target) 
+        && (target.x === this.cell.x + 1 || target.x === this.cell.x - 1))
+            return true;
+        if(this.cell.isEmptyDiagonal(target)
+        && (target.y === this.cell.y + 1 || target.y === this.cell.y - 1 || target.x === this.cell.x + 1 || target.x === this.cell.x - 1))
+            return true;
+    return false
+    }
 }
